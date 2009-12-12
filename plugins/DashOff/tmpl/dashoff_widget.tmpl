@@ -1,0 +1,73 @@
+<mt:setvarblock name="html_head" prepend="1">
+    <mt:unless name="myblogs_style"><style>
+.dashoff-widget .icon-mini-left {
+    padding-left: 11px;
+}
+.dashoff-widget li ul {
+    margin-bottom: 3px;
+}
+.dashoff-widget li.dashoff-blog {
+    padding-top: 6px;
+    border-bottom: 1px solid #E7EFF3;
+}
+.dashoff-widget li a span {
+    display: none;
+}
+.dashoff-widget li li {
+    display: inline;
+    font-size: 10px;
+}
+.dashoff-widget li a {
+    margin-right: 3px;
+}
+.dashoff-widget li li a {
+    margin-right: 6px;
+}
+	</style>
+    <mt:setvar name="myblogs_style" value="1">
+    </mt:unless>
+</mt:setvarblock>
+
+<mtapp:widget label="DashOff" class="dashoff-widget" can_close="1">
+    <mt:if name="blog_loop">
+<ul>
+        <mt:loop name="blog_loop">
+    <li<mt:if name="__last__"> id="last-dashoff-item"</mt:if><mt:if name="__first__"> id="first-dashoff-item"</mt:if> class="dashoff-blog">
+        <a href="<mt:var name="script_url">?__mode=dashboard&amp;blog_id=<mt:var name="id">" class="icon-mini-right icon-mini-dashboard" title="<__trans phrase="Dashboard">"><mt:var name="name"></a>
+            <mt:if name="can_rebuild">
+                <mt:unless name="dynamic_all">
+        <a href="javascript:void(0)" title="<__trans phrase="Publish Site">" onclick="window.open('<$mt:var name="mt_url"$>?__mode=rebuild_confirm&amp;blog_id=<mt:var name="id">', 'rebuild', 'width=400,height=400,resizable=yes'); return false" class="icon-mini-left icon-mini-rebuild" title="<__trans phrase="Publish">"><span><__trans phrase="Publish"></span></a>
+                </mt:unless>
+            </mt:if>
+        <a href="<mt:var name="site_url">" target="<__trans phrase="_external_link_target">" class="icon-mini-left icon-mini-view-site" title="<__trans phrase="View Site">"><span><__trans phrase="View Site"></span></a>
+        <ul class="pkg">
+            <mt:if name="show_create_link">
+                <li><mt:if name="can_create_post"><a href="<mt:var name="script_url">?__mode=view&amp;_type=entry&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-new-entry" title="<__trans phrase="New Entry">"><span><__trans phrase="New Entry"></span></a></mt:if></li>
+                <li><mt:if name="can_manage_pages"><a href="<mt:var name="script_url">?__mode=view&amp;_type=page&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-new-page" title="<__trans phrase="New Page">"><span><__trans phrase="New Page"></span></a></mt:if></li>
+                <li><mt:if name="can_upload"><a href="javascript:void(0);" onclick="return openDialog(false, 'start_upload', 'blog_id=<mt:var name="id">&amp;return_args=<mt:var name="return_args">');" class="icon-mini-left icon-mini-new-asset" title="<__trans phrase="Upload Asset">"><span><__trans phrase="Upload Asset"></span></a></mt:if></li>
+            </mt:if>
+            <mt:if name="can_edit_entries">
+                <li><a href="<mt:var name="script_url">?__mode=list_entries&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-entries" title="<__trans phrase="Entries">"><span><__trans phrase="Entries"></span><mt:if name="dashoff_counts"><mt:var name="num_entries"></mt:if></a></li>
+            </mt:if>
+            <mt:if name="can_manage_pages">
+                <li><a href="<mt:var name="script_url">?__mode=list_pages&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-pages" title="<__trans phrase="Pages">"><span><__trans phrase="Pages"></span><mt:if name="dashoff_counts"><mt:var name="num_pages"></mt:if></a></li>
+            </mt:if>
+            <mt:if name="can_edit_entries">
+                <li><a href="<mt:var name="script_url">?__mode=list_comments&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-comments" title="<__trans phrase="Comments">"><span><__trans phrase="Comments"></span><mt:if name="dashoff_counts"><mt:var name="num_comments"></mt:if></a></li>
+                <li><a href="<mt:var name="script_url">?__mode=list_pings&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-trackbacks" title="<__trans phrase="TrackBacks">"><span><__trans phrase="TrackBacks"></span><mt:if name="dashoff_counts"><mt:var name="num_pings"></mt:if></a></li>
+            </mt:if>
+            <mt:if name="can_edit_assets">
+                <li><a href="<mt:var name="script_url">?__mode=list_assets&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-assets" title="<__trans phrase="Assets">"><span><__trans phrase="Assets"></span><mt:if name="dashoff_counts"><mt:var name="num_assets"></mt:if></a></li>
+            </mt:if>
+            <mt:if name="can_edit_templates">
+                <li><a href="<mt:var name="script_url">?__mode=list&amp;_type=template&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-templates" title="<__trans phrase="Templates">"><span><__trans phrase="Templates"></span></a></li>
+            </mt:if>
+            <mt:if name="can_edit_config">
+                <li><a href="<mt:var name="script_url">?__mode=cfg_prefs&amp;blog_id=<mt:var name="id">" class="icon-mini-left icon-mini-settings" title="<__trans phrase="Settings">"><span><__trans phrase="Settings"></span></a></li>
+            </mt:if>
+        </ul>
+    </li>
+        </mt:loop>
+</ul>
+    </mt:if>
+</mtapp:widget>

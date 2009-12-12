@@ -1,0 +1,23 @@
+<mtapp:setting
+    id="dashoff_sort"
+    label="Sort By"
+    show_hint="0">
+    <p><label><input type="radio" name="dashoff_sort" value="name"<mt:if name="dashoff_sort_name"> checked="checked"</mt:if> /> <__trans phrase="Blog Name"></label></p>
+    <p><label><input type="radio" name="dashoff_sort" value="id"<mt:if name="dashoff_sort_id"> checked="checked"</mt:if> /> <__trans phrase="Creation Order"></label></p>
+    <p><label><input type="radio" name="dashoff_sort" value="children_modified_on"<mt:if name="dashoff_sort_children_modified_on"> checked="checked"</mt:if> /> <__trans phrase="Last Updated"></label></p>
+</mtapp:setting>
+
+<mtapp:setting
+    id="dashoff_direction"
+    label="Sort Order"
+    show_hint="0">
+    <p><label><input type="radio" name="dashoff_direction" value="ascend"<mt:if name="dashoff_direction_ascend"> checked="checked"</mt:if> /> <__trans phrase="Ascending"></label></p>
+    <p><label><input type="radio" name="dashoff_direction" value="descend"<mt:if name="dashoff_direction_descend"> checked="checked"</mt:if> /> <__trans phrase="Descending"></label></p>
+</mtapp:setting>
+
+<mtapp:setting
+    id="dashoff_counts"
+    label="Show Counts"
+    show_hint="0">
+    <p><label><input type="checkbox" name="dashoff_counts"<mt:if name="dashoff_counts"> checked="checked"</mt:if> /> <__trans phrase="Show totals for listings"></label></p>
+</mtapp:setting>
